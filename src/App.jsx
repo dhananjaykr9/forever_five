@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Hero from './components/Hero';
 import Timeline from './components/Timeline';
 import PhotoGrid from './components/PhotoGrid';
@@ -8,20 +10,31 @@ import ImageCarousel from './components/ImageCarousel';
 import FloatingHearts from './components/FloatingHearts';
 import TimeCounter from './components/TimeCounter';
 import ScrollProgress from './components/ScrollProgress';
+import WelcomeScreen from './components/WelcomeScreen';
 
 function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
+
   return (
     <div className="app-container">
-      <ScrollProgress />
-      <FloatingHearts />
-      <Hero />
-      <TimeCounter />
-      <LoveStory />
-      <Timeline />
-      <ImageCarousel />
-      <PhotoGrid />
-      <WishCard />
-      <Footer />
+      <AnimatePresence>
+        {showWelcome && <WelcomeScreen onEnter={() => setShowWelcome(false)} />}
+      </AnimatePresence>
+
+      {!showWelcome && (
+        <>
+          <ScrollProgress />
+          <FloatingHearts />
+          <Hero />
+          <TimeCounter />
+          <LoveStory />
+          <Timeline />
+          <ImageCarousel />
+          <PhotoGrid />
+          <WishCard />
+          <Footer />
+        </>
+      )}
     </div>
   )
 }
