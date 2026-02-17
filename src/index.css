@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Yantramanav:wght@400;700&display=swap');
+
+:root {
+  --color-primary: #C5A059;
+  /* Royal Gold */
+  --color-secondary: #800000;
+  /* Deep Maroon */
+  --color-bg: #FFFFF0;
+  /* Cream/Ivory */
+  --color-text: #2D2D2D;
+  /* Charcoal */
+  --color-white: #FFFFFF;
+
+  --font-heading: 'Great Vibes', cursive;
+  --font-subheading: 'Playfair Display', serif;
+  --font-body: 'Lato', sans-serif;
+  --font-accent: 'Montserrat', sans-serif;
+  --font-marathi: 'Yantramanav', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+h2 {
+  font-family: var(--font-subheading);
+  color: var(--color-secondary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  #root,
+  .app-container {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    background-attachment: scroll !important;
+  }
+
+  .hero-title {
+    font-size: 3rem !important;
+    word-wrap: break-word;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .wish-title {
+    font-size: 1.8rem !important;
+  }
+
+  .wish-card-content {
+    padding: 1.5rem !important;
+    width: 90% !important;
+    max-width: 90vw !important;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .timeline-line {
+    left: 20px !important;
+    transform: none !important;
+  }
+
+  .timeline-item {
+    justify-content: flex-start !important;
+    padding-left: 50px !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+    width: auto !important;
+    box-sizing: border-box;
+    margin-right: 1rem;
+    /* Safety margin */
+  }
+
+  .timeline-dot {
+    left: 20px !important;
+    width: 16px !important;
+    height: 16px !important;
+    top: 5px !important;
+  }
+
+  .timeline-content {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 1rem !important;
+    box-sizing: border-box;
+  }
+
+
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.hero-title {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 3rem;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-content {
+  width: 45%;
+  background: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.wish-section {
+  position: relative;
+  padding: 6rem 1rem;
+  background: url("/images/wish.jpg") center/cover fixed no-repeat;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.wish-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  z-index: 1;
+}
+
+.wish-card-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 4rem 2rem;
+  border-radius: 30px;
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.wish-icon-wrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.wish-icon-bg {
+  padding: 15px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 50%;
+}
+
+.wish-title {
+  font-size: 3.5rem;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  letter-spacing: 2px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.wish-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  margin: 0 auto 3rem;
+}
+
+.wish-text-english {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  padding: 0 1rem;
+}
+
+.wish-highlight {
+  color: #FFD700;
+}
+
+.wish-text-marathi {
+  font-size: 1.4rem;
+  font-family: var(--font-marathi);
+  margin-bottom: 3rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 1rem;
+}
+
+.wish-signature-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wish-signature-label {
+  font-size: 0.9rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.wish-signature-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #FFD700;
+  font-family: var(--font-signature, cursive);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .wish-section {
+    background-attachment: scroll !important;
+    /* Fix mobile jitter */
+  }
+
+  .carousel-container {
+    height: 50vh !important;
+    min-height: 300px !important;
+    max-height: 500px !important;
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  max-height: 800px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 4px solid white;
+  transform: translateZ(0);
+}
