@@ -14,7 +14,7 @@ const mediaItems = [
 
 const PhotoGrid = () => {
     return (
-        <section id="gallery" style={{
+        <section id="gallery" className="section-padding" style={{
             padding: '6rem 1rem',
             background: 'linear-gradient(to bottom, #fff, #f9f9f9)',
             position: 'relative',
@@ -43,7 +43,7 @@ const PhotoGrid = () => {
             }}></div>
 
             <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', marginBottom: '4rem' }}>
-                <Motion.h2
+                <Motion.h2 className="section-title photo-grid-title"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
@@ -78,7 +78,7 @@ const PhotoGrid = () => {
                 }}></div>
             </div>
 
-            <div style={{
+            <div className="photo-grid-container" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                 gap: '2rem',
@@ -91,15 +91,16 @@ const PhotoGrid = () => {
                     return (
                         <Motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
+                            className="photo-grid-item hover-scale"
+                            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
                             style={{
                                 overflow: 'hidden',
                                 borderRadius: '15px',
                                 height: '350px',
-                                boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
+                                boxShadow: 'var(--shadow-sm)',
                                 border: '4px solid #fff',
                                 position: 'relative'
                             }}

@@ -52,7 +52,7 @@ const WelcomeScreen = ({ onEnter }) => {
                 transition={{ duration: 1, delay: 0.2 }}
                 style={{ zIndex: 1 }}
             >
-                <h1 style={{
+                <h1 className="welcome-title" style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: '5rem',
                     color: '#FFD700',
@@ -74,7 +74,7 @@ const WelcomeScreen = ({ onEnter }) => {
                     }}
                 />
 
-                <p style={{
+                <p className="welcome-subtitle" style={{
                     fontSize: '1.8rem',
                     marginBottom: '3rem',
                     fontFamily: 'var(--font-subheading)',

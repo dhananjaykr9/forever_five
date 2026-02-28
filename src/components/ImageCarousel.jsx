@@ -63,9 +63,9 @@ const ImageCarousel = () => {
     };
 
     return (
-        <section style={{ padding: '4rem 1rem', background: 'var(--color-bg)', color: 'var(--color-text)' }}>
-            <h2 className="section-title" style={{ textAlign: 'center', fontSize: '3rem', marginBottom: '2rem', color: 'var(--color-primary)', fontFamily: 'var(--font-heading)' }}>
-                Captured Moments <span style={{ fontSize: '2rem', fontFamily: 'var(--font-marathi)', display: 'block', marginTop: '0.5rem' }}>सुंदर क्षण</span>
+        <section className="section-padding" style={{ padding: '4rem 1rem', background: 'var(--color-bg)', color: 'var(--color-text)' }}>
+            <h2 className="section-title carousel-title" style={{ textAlign: 'center', fontSize: '3rem', marginBottom: '2rem', color: 'var(--color-primary)', fontFamily: 'var(--font-heading)' }}>
+                Captured Moments <span className="carousel-subtitle" style={{ fontSize: '2rem', fontFamily: 'var(--font-marathi)', display: 'block', marginTop: '0.5rem' }}>सुंदर क्षण</span>
             </h2>
 
             <div
@@ -78,9 +78,20 @@ const ImageCarousel = () => {
                     gap: '1rem'
                 }}
             >
-                {/* Main Slide */}
+                {/* Main Slide - HEIGHT INCREASED HERE */}
                 <div
-                    className="carousel-container"
+                    style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '80vh', // Changed from 60vh
+                        minHeight: '500px', // Increased minimum
+                        maxHeight: '950px', // Increased maximum
+                        overflow: 'hidden',
+                        borderRadius: '20px',
+                        boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+                        border: '4px solid white',
+                        transform: 'translateZ(0)'
+                    }}
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     onTouchStart={() => setIsPaused(true)}
@@ -172,8 +183,8 @@ const ImageCarousel = () => {
                             whileTap={{ scale: 0.95 }}
                             style={{
                                 position: 'relative',
-                                width: '100px',
-                                height: '100px',
+                                width: '80px',
+                                height: '60px',
                                 borderRadius: '10px',
                                 overflow: 'hidden',
                                 cursor: 'pointer',

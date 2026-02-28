@@ -10,7 +10,7 @@ const timelineData = [
 
 const Timeline = () => {
     return (
-        <section id="timeline" style={{
+        <section id="timeline" className="section-padding" style={{
             padding: '6rem 1rem',
             background: 'linear-gradient(to bottom, var(--color-bg), #fff0e0)',
             position: 'relative',
@@ -43,7 +43,7 @@ const Timeline = () => {
                 </span>
             </Motion.div>
 
-            <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
+            <div className="timeline-wrapper" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
                 {/* Vertical Line */}
                 <div className="timeline-line" style={{
                     position: 'absolute',
@@ -92,6 +92,7 @@ const Timeline = () => {
                         <Motion.div
                             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.1 }}
                             className="timeline-content"
                             style={{
@@ -103,7 +104,7 @@ const Timeline = () => {
                                 alignItems: index % 2 === 0 ? 'flex-end' : 'flex-start'
                             }}
                         >
-                            <div className="timeline-icon-wrapper" style={{
+                            <div className="timeline-icon-wrapper glow-text hover-scale" style={{
                                 color: 'var(--color-white)',
                                 marginBottom: '1rem',
                                 background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',

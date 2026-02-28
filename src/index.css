@@ -17,6 +17,12 @@
   --font-body: 'Lato', sans-serif;
   --font-accent: 'Montserrat', sans-serif;
   --font-marathi: 'Yantramanav', sans-serif;
+
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.08);
+  /* Softer shadows */
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+  /* Premium hover shadow */
+  --glow-primary: 0 0 20px rgba(197, 160, 89, 0.4);
 }
 
 * {
@@ -34,9 +40,10 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.8;
+  /* Better typography spacing */
   overflow-x: hidden;
   width: 100%;
   margin: 0;
@@ -79,7 +86,8 @@ img {
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  /* Slightly wider */
 }
 
 ::-webkit-scrollbar-track {
@@ -87,12 +95,35 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--color-primary), #A67C00);
+  /* Premium gradient */
+  border-radius: 10px;
+  /* Softer pill */
+  border: 2px solid var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
+  background: var(--color-primary);
+  box-shadow: var(--glow-primary);
+}
+
+/* Base Utility Classes */
+.hover-scale {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.hover-scale:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+}
+
+.glow-text {
+  transition: text-shadow 0.3s ease;
+}
+
+.glow-text:hover {
+  text-shadow: var(--glow-primary);
 }
 
 /* Responsive Styles */
@@ -140,6 +171,79 @@ img {
     box-sizing: border-box;
   }
 
+  /* --- OVERRIDES FOR COMPONENTS --- */
+
+  /* Utilities */
+  .section-padding {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .section-title {
+    font-size: 2.5rem !important;
+  }
+
+  /* Welcome Screen */
+  .welcome-title {
+    font-size: 3rem !important;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.3rem !important;
+    padding: 0 1rem;
+  }
+
+  /* Hero Section */
+  .hero-title {
+    font-size: 3.5rem !important;
+    line-height: 1.1;
+  }
+
+  .hero-names {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-names-marathi {
+    font-size: 1.2rem !important;
+  }
+
+  .hero-date {
+    font-size: 1rem !important;
+  }
+
+  /* Love Story */
+  .love-story-card {
+    padding: 1.5rem !important;
+    border-radius: 15px !important;
+    margin-bottom: -1rem !important;
+  }
+
+  .love-story-card div {
+    font-size: 4rem !important;
+    top: -1.5rem !important;
+    left: 0.5rem !important;
+  }
+
+  .love-story-card p {
+    font-size: 1.1rem !important;
+  }
+
+  /* Time Counter */
+  .time-counter-item {
+    min-width: 100px !important;
+    flex: 1 1 100px !important;
+    padding: 1rem !important;
+  }
+
+  .time-counter-item div:first-child {
+    font-size: 2rem !important;
+  }
+
+  /* Timeline overrides */
+  .timeline-wrapper {
+    padding: 0 10px !important;
+  }
+
   .timeline-line {
     left: 20px !important;
     transform: none !important;
@@ -147,36 +251,165 @@ img {
 
   .timeline-item {
     justify-content: flex-start !important;
-    padding-left: 50px !important;
-    padding-right: 0 !important;
-    text-align: left !important;
-    width: auto !important;
-    box-sizing: border-box;
-    margin-right: 1rem;
-    /* Safety margin */
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+    padding-bottom: 0 !important;
   }
 
   .timeline-dot {
     left: 20px !important;
-    width: 16px !important;
-    height: 16px !important;
-    top: 5px !important;
+    width: 18px !important;
+    height: 18px !important;
+    top: 0 !important;
+    transform: translateX(-50%) !important;
   }
 
   .timeline-content {
     width: 100% !important;
-    margin-left: 0 !important;
-    padding: 1rem !important;
-    box-sizing: border-box;
+    margin-left: 20px !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+    align-items: flex-start !important;
   }
 
+  .timeline-content h3 {
+    font-size: 2rem !important;
+  }
 
+  /* Carousel and Grid */
+  .photo-grid-title {
+    font-size: 2.5rem !important;
+  }
+
+  .carousel-title {
+    font-size: 2.5rem !important;
+  }
+
+  .carousel-subtitle {
+    font-size: 1.5rem !important;
+  }
+
+  .photo-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .photo-grid-item {
+    height: 250px !important;
+  }
+
+  /* Wish Card */
+  .wish-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .wish-card-content {
+    padding: 2rem 1.5rem !important;
+  }
+
+  .wish-title {
+    font-size: 2.5rem !important;
+  }
+
+  .wish-text,
+  .wish-text-marathi-wish {
+    font-size: 1rem !important;
+  }
+
+  /* Video and Image scaling adjustments */
+  video {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 250px !important;
+  }
 
   img {
     max-width: 100%;
     height: auto;
   }
 }
+
+/* --- TABLET OVERRIDES (769px - 1024px) --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-title {
+    font-size: 3rem !important;
+  }
+
+  .welcome-title {
+    font-size: 4rem !important;
+  }
+
+  .hero-title {
+    font-size: 4rem !important;
+  }
+
+  .time-counter-item {
+    min-width: 110px !important;
+    flex: 1 1 110px !important;
+  }
+
+  .timeline-content {
+    width: 48% !important;
+  }
+
+  .timeline-content h3 {
+    font-size: 2.2rem !important;
+  }
+
+  .wish-title {
+    font-size: 3rem !important;
+  }
+
+  .wish-text,
+  .wish-text-marathi-wish {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* --- LARGE SCREEN OVERRIDES (1440px and up) --- */
+@media (min-width: 1440px) {
+  .app-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-title {
+    font-size: 4.5rem !important;
+  }
+
+  .hero-title {
+    font-size: 6rem !important;
+  }
+
+  .welcome-title {
+    font-size: 6rem !important;
+  }
+
+  .love-story-container {
+    max-width: 1200px !important;
+  }
+
+  .timeline-wrapper {
+    max-width: 1200px !important;
+  }
+
+  .time-counter-item {
+    padding: 2.5rem !important;
+    min-width: 160px !important;
+  }
+
+  .time-counter-item div:first-child {
+    font-size: 4rem !important;
+  }
+
+  .wish-card-content {
+    max-width: 1000px !important;
+  }
+}
+
 
 .app-container {
   width: 100%;
@@ -205,8 +438,14 @@ img {
   background: var(--color-white);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
 }
 
 .wish-section {

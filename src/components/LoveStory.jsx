@@ -2,7 +2,7 @@ import { motion as Motion } from 'framer-motion';
 
 const LoveStory = () => {
     return (
-        <section id="lovestory" style={{
+        <section id="lovestory" className="section-padding" style={{
             padding: '6rem 1rem',
             background: 'var(--color-bg)',
             position: 'relative',
@@ -63,8 +63,8 @@ const LoveStory = () => {
                 }}></div>
             </Motion.div>
 
-            <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                <Motion.div
+            <div className="love-story-container" style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                <Motion.div className="love-story-card"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
@@ -93,7 +93,7 @@ const LoveStory = () => {
                     </p>
                 </Motion.div>
 
-                <Motion.div
+                <Motion.div className="love-story-card"
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
