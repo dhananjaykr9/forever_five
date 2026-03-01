@@ -8,25 +8,25 @@ const TimeCounter = () => {
     useEffect(() => {
         const calculateTime = () => {
             const now = new Date();
-            const anniversaryCount = now.getFullYear() - startDate.getFullYear();
-            const anniversaryThisYear = new Date(now.getFullYear(), startDate.getMonth(), startDate.getDate());
-            const lastAnniversary = now >= anniversaryThisYear
-                ? anniversaryThisYear
-                : new Date(now.getFullYear() - 1, startDate.getMonth(), startDate.getDate());
 
-            let months = now.getMonth() - lastAnniversary.getMonth();
-            let days = now.getDate() - lastAnniversary.getDate();
-            let hours = now.getHours() - lastAnniversary.getHours();
-            let minutes = now.getMinutes() - lastAnniversary.getMinutes();
-            let seconds = now.getSeconds() - lastAnniversary.getSeconds();
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            let hours = now.getHours() - startDate.getHours();
+            let minutes = now.getMinutes() - startDate.getMinutes();
+            let seconds = now.getSeconds() - startDate.getSeconds();
 
             if (seconds < 0) { minutes--; seconds += 60; }
             if (minutes < 0) { hours--; minutes += 60; }
             if (hours < 0) { days--; hours += 24; }
-            if (days < 0) { months--; const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0); days += prevMonth.getDate(); }
-            if (months < 0) { months += 12; }
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+            if (months < 0) { years--; months += 12; }
 
-            setTimeLeft({ years: anniversaryCount, months, days, hours, minutes, seconds });
+            setTimeLeft({ years, months, days, hours, minutes, seconds });
         };
         const timer = setInterval(calculateTime, 1000);
         calculateTime();

@@ -15,80 +15,133 @@ const WelcomeScreen = ({ onEnter }) => {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 1.5, ease: 'easeInOut' } }}
             style={{
-                position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh',
+                position: 'relative',
+                minHeight: '100svh',
+                width: '100%',
                 background: 'linear-gradient(135deg, #1a0303, #5a0000, #800000, #4a0000)',
-                display: 'flex', flexDirection: 'column', justifyContent: 'center',
-                alignItems: 'center', zIndex: 9999, color: '#fff', textAlign: 'center',
-                padding: '2rem', overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: 9999,
+                color: '#fff',
+                textAlign: 'center',
+                padding: 'clamp(2rem, 8vw, 5rem) clamp(1rem, 5vw, 3rem)',
+                boxSizing: 'border-box',
+                overflow: 'hidden',
             }}
         >
+            {/* Falling petals — decorative only */}
             {PETALS.map((p) => (
                 <Motion.div
                     key={p.id}
                     initial={{ y: '-10vh', opacity: 0, rotate: 0 }}
                     animate={{ y: '110vh', opacity: [0, 1, 1, 0], rotate: 360 }}
                     transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: 'linear' }}
-                    style={{ position: 'absolute', left: `${p.left}%`, fontSize: `${p.size}px`, pointerEvents: 'none', zIndex: 0 }}
+                    style={{
+                        position: 'absolute', left: `${p.left}%`,
+                        fontSize: `${p.size}px`, pointerEvents: 'none', zIndex: 0,
+                    }}
                 >
                     {p.symbol}
                 </Motion.div>
             ))}
 
-            <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '45%', height: '45%', background: 'radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
-            <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '55%', height: '55%', background: 'radial-gradient(circle, rgba(255,215,0,0.10) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
+            {/* Background glows */}
+            <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '45%', height: '45%', background: 'radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '55%', height: '55%', background: 'radial-gradient(circle, rgba(255,215,0,0.10) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none' }} />
 
+            {/* Main card */}
             <Motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
+                initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                style={{ zIndex: 1, position: 'relative' }}
+                style={{
+                    zIndex: 1, position: 'relative',
+                    display: 'flex', flexDirection: 'column',
+                    alignItems: 'center', gap: '0',
+                    width: '100%', maxWidth: '700px',
+                }}
             >
+                {/* Ornament */}
                 <Motion.div
                     initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
-                    style={{ fontSize: '2.5rem', marginBottom: '1rem', filter: 'drop-shadow(0 0 10px rgba(255,215,0,0.6))' }}
+                    style={{
+                        fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
+                        marginBottom: 'clamp(0.5rem, 2vw, 1rem)',
+                        filter: 'drop-shadow(0 0 10px rgba(255,215,0,0.6))',
+                    }}
                 >
                     ✦ ❧ ✦
                 </Motion.div>
 
-                <h1 className="welcome-title" style={{
-                    fontFamily: 'var(--font-heading)', fontSize: '5rem', color: '#FFD700',
-                    marginBottom: '0.5rem', lineHeight: '1.2',
+                {/* Main title */}
+                <h1 style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                    color: '#FFD700',
+                    marginBottom: 'clamp(0.3rem, 1.5vw, 0.5rem)',
+                    lineHeight: '1.2',
                     textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,0,0.3)',
                 }}>
                     A Special Surprise
                 </h1>
 
+                {/* Marathi subtitle */}
                 <Motion.p
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    style={{ fontSize: '1.2rem', fontFamily: 'var(--font-marathi)', color: 'rgba(255,215,0,0.75)', marginBottom: '0.5rem', letterSpacing: '2px' }}
+                    style={{
+                        fontSize: 'clamp(0.95rem, 3vw, 1.2rem)',
+                        fontFamily: 'var(--font-marathi)',
+                        color: 'rgba(255,215,0,0.75)',
+                        marginBottom: 'clamp(0.3rem, 1vw, 0.5rem)',
+                        letterSpacing: '2px',
+                    }}
                 >
                     एक खास आठवण
                 </Motion.p>
 
+                {/* Animated gold divider */}
                 <Motion.div
-                    initial={{ width: 0 }} animate={{ width: '160px' }}
+                    initial={{ width: 0 }} animate={{ width: 'clamp(80px, 30vw, 160px)' }}
                     transition={{ duration: 1.2, delay: 1.0 }}
-                    style={{ height: '2px', background: 'linear-gradient(90deg, transparent, #FFD700, transparent)', margin: '1.2rem auto 2rem' }}
+                    style={{
+                        height: '2px',
+                        background: 'linear-gradient(90deg, transparent, #FFD700, transparent)',
+                        margin: 'clamp(0.8rem, 2vw, 1.2rem) auto clamp(1rem, 3vw, 2rem)',
+                    }}
                 />
 
-                <p className="welcome-subtitle" style={{
-                    fontSize: '1.6rem', marginBottom: '3rem', fontFamily: 'var(--font-subheading)',
-                    color: '#ddd', maxWidth: '600px', lineHeight: '1.7',
+                {/* Subtitle text */}
+                <p style={{
+                    fontSize: 'clamp(1rem, 3.5vw, 1.6rem)',
+                    marginBottom: 'clamp(1.5rem, 4vw, 3rem)',
+                    fontFamily: 'var(--font-subheading)',
+                    color: '#ddd',
+                    maxWidth: '560px',
+                    lineHeight: '1.7',
+                    padding: '0 0.5rem',
                 }}>
                     For the couple who makes love look timeless.
                     <br />
-                    <span style={{ fontSize: '1.3rem', color: '#FFD700', fontStyle: 'italic' }}>
+                    <span style={{ fontSize: 'clamp(0.9rem, 3vw, 1.3rem)', color: '#FFD700', fontStyle: 'italic' }}>
                         Happy Wedding Anniversary! 💑
                     </span>
                 </p>
 
+                {/* CTA Button with pulsing ring */}
                 <Motion.div style={{ position: 'relative', display: 'inline-block' }}>
                     <Motion.div
                         animate={{ scale: [1, 1.3, 1.6], opacity: [0.6, 0.3, 0] }}
                         transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
-                        style={{ position: 'absolute', inset: '-10px', borderRadius: '50px', background: 'rgba(255,215,0,0.3)', pointerEvents: 'none' }}
+                        style={{
+                            position: 'absolute', inset: '-10px',
+                            borderRadius: '50px',
+                            background: 'rgba(255,215,0,0.3)',
+                            pointerEvents: 'none',
+                        }}
                     />
                     <Motion.button
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -98,11 +151,15 @@ const WelcomeScreen = ({ onEnter }) => {
                         transition={{ duration: 0.5, delay: 1.5 }}
                         onClick={onEnter}
                         style={{
-                            padding: '1.2rem 4rem', fontSize: '1.4rem',
+                            padding: 'clamp(0.9rem, 3vw, 1.2rem) clamp(2rem, 8vw, 4rem)',
+                            fontSize: 'clamp(1rem, 4vw, 1.4rem)',
                             background: 'linear-gradient(45deg, #C5A059, #FFD700, #FDB931)',
-                            border: 'none', color: '#4a0404', borderRadius: '50px',
-                            cursor: 'pointer', fontFamily: 'var(--font-heading)', fontWeight: 'bold',
-                            boxShadow: '0 10px 25px rgba(0,0,0,0.4)', letterSpacing: '1px', position: 'relative',
+                            border: 'none', color: '#4a0404',
+                            borderRadius: '50px', cursor: 'pointer',
+                            fontFamily: 'var(--font-heading)', fontWeight: 'bold',
+                            boxShadow: '0 10px 25px rgba(0,0,0,0.4)',
+                            letterSpacing: '1px', position: 'relative',
+                            touchAction: 'manipulation',
                         }}
                     >
                         Open Surprise 🎁
