@@ -296,7 +296,7 @@ img {
   }
 
   .photo-grid-item {
-    height: 250px !important;
+    height: 450px !important;
   }
 
   /* Wish Card */
@@ -321,8 +321,8 @@ img {
   /* Video and Image scaling adjustments */
   video {
     width: 100% !important;
-    height: auto !important;
-    max-height: 250px !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
 
   img {

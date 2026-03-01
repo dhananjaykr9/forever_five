@@ -99,7 +99,7 @@ const PhotoGrid = () => {
                             style={{
                                 overflow: 'hidden',
                                 borderRadius: '15px',
-                                height: '350px',
+                                height: '500px',
                                 boxShadow: 'var(--shadow-sm)',
                                 border: '4px solid #fff',
                                 position: 'relative'
