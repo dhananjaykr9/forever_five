@@ -12,8 +12,8 @@ const timelineData = [
 const Timeline = () => (
     <section id="timeline" className="section-padding" style={{ padding: '6rem 1rem', background: 'linear-gradient(to bottom, #fffdf7, #fff5e0, #fffdf7)', position: 'relative', overflow: 'hidden' }}>
         <Motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} style={{ textAlign: 'center', marginBottom: '5rem', position: 'relative', zIndex: 1 }}>
-            <h2 className="section-title" style={{ fontSize: '3.5rem', marginBottom: '0.5rem', color: 'var(--color-primary)', fontFamily: 'var(--font-heading)' }}>Our Journey</h2>
-            <span style={{ fontSize: '1.8rem', fontFamily: 'var(--font-marathi)', display: 'block', marginTop: '0.3rem', color: 'var(--color-secondary)' }}>आमचा प्रवास</span>
+            <h2 className="section-title" style={{ fontSize: '3.5rem', marginBottom: '0.5rem', color: 'var(--color-primary)', fontFamily: 'var(--font-heading)' }}>Journey</h2>
+            <span style={{ fontSize: '1.8rem', fontFamily: 'var(--font-marathi)', display: 'block', marginTop: '0.3rem', color: 'var(--color-secondary)' }}>प्रवास</span>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginTop: '1.5rem' }}>
                 <Motion.div initial={{ width: 0 }} whileInView={{ width: '60px' }} transition={{ duration: 0.9, delay: 0.2 }} style={{ height: '2px', background: 'var(--color-primary)', borderRadius: '2px' }} />
                 <span style={{ color: 'var(--color-primary)', fontSize: '1.1rem' }}>✦</span>
